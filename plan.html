@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>기획서 — 노똘똘의 견생 일지</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --choco-950:#2a160b; --choco-900:#3b2213; --accent-deep:#7a5238; --accent:#c9a57e;
+  --paper:#f6efe3; --paper-2:#ecdfc9; --ink:#2b1a10; --ink-soft:#6f5a49; --line:#e0d2bb;
+  --must:#4a2c1a; --must-bg:#f3e4d6; --later:#8a6416; --later-bg:#fff4dc;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-size:16px;word-break:keep-all}
+.wrap{max-width:760px;margin:0 auto;padding:0 24px}
+.hero{background:linear-gradient(180deg,var(--choco-950),var(--choco-900) 75%);color:#fff;padding:48px 0 32px}
+.hero .eyebrow{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px}
+.hero h1{font-size:clamp(22px,3.6vw,28px);font-weight:800;letter-spacing:-.01em;margin-bottom:8px}
+.hero p{color:#dcc7ad;font-size:14px;max-width:560px}
+.doc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:40px 44px;margin:-18px 0 60px;box-shadow:0 10px 26px rgba(42,22,11,.08)}
+.doc .doctitle{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:6px}
+.doc h2{font-size:24px;font-weight:800;color:var(--choco-900);margin-bottom:4px}
+.doc .subtitle{font-size:14.5px;color:var(--ink-soft);margin-bottom:28px;font-style:italic}
+.sec{margin-bottom:26px}
+.sec:last-child{margin-bottom:0}
+.sec h3{font-size:13px;font-weight:800;color:var(--choco-900);letter-spacing:.03em;margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--choco-900);display:inline-block}
+.sec p{font-size:14.5px;color:var(--ink);margin-bottom:8px}
+.sec p:last-child{margin-bottom:0}
+.sec ul{padding-left:20px;font-size:14.5px;color:var(--ink)}
+.sec li{margin-bottom:6px}
+.sec li:last-child{margin-bottom:0}
+.twocol{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.minicard{background:var(--paper-2);border-radius:8px;padding:14px 16px}
+.minicard .lbl{font-size:11px;font-weight:800;color:var(--accent-deep);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+.minicard .val{font-size:14px;color:var(--ink)}
+.swatch{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;vertical-align:-1px;border:1px solid rgba(0,0,0,.15)}
+.feattable{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
+.feattable th{text-align:left;font-size:11px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;padding:8px 10px;border-bottom:2px solid var(--line)}
+.feattable td{padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.feattable tr:last-child td{border-bottom:none}
+.feattable .fname{font-weight:700;color:var(--choco-900);white-space:nowrap}
+.prio{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:10px;white-space:nowrap}
+.prio.high{background:var(--must-bg);color:var(--must)}
+.prio.mid{background:var(--later-bg);color:var(--later)}
+@media(max-width:600px){.doc{padding:28px 24px}.twocol{grid-template-columns:1fr}.feattable .fname{white-space:normal}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">🐾 Project Plan</div>
+    <h1>노똘똘의 견생 일지 기획서</h1>
+    <p>2012년 5월 26일생 초코탄 닥스훈트, 우리집 똘똘이의 견생을 모아 두는 사이트를 만들기 위한 기획서입니다.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="doc">
+    <div class="doctitle">Project Plan</div>
+    <h2>노똘똘의 견생 일지</h2>
+    <div class="subtitle">2012년생 꼬마 닥스훈트 · 강아지 발바닥이 쫑쫑</div>
+
+    <div class="sec">
+      <h3>01. 기획 배경</h3>
+      <p>우리집 강아지 똘똘이는 2012년에 태어난 초코탄 닥스훈트입니다. 열네 살이 되도록 함께 지내며 쌓인 사진과 이야기가 여기저기 흩어져 있어서, 자랑하고 싶을 때 바로 보여줄 곳이 없었습니다. 똘똘이의 견생을 한곳에 모아 두는 나만의 공간을 만들고 싶습니다.</p>
+    </div>
+
+    <div class="sec">
+      <h3>02. 누가 보나요</h3>
+      <div class="twocol">
+        <div class="minicard">
+          <div class="lbl">보는 사람</div>
+          <div class="val">우리 가족과 친구, 지인, 그리고 닥스훈트를 사랑하는 사람들</div>
+        </div>
+        <div class="minicard">
+          <div class="lbl">보여주고 싶은 것</div>
+          <div class="val">똘똘이의 사진들, 프로필, 그리고 살아온 날들</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h3>03. 디자인 방향</h3>
+      <div class="twocol">
+        <div class="minicard">
+          <div class="lbl">사이트명 / 로고</div>
+          <div class="val">2012년생 꼬마 닥스훈트 노똘똘의 견생 일지 / 강아지 발바닥이 쫑쫑 (메인에는 "노똘똘의 견생 일지"만 크게, 나머지는 부제로)</div>
+        </div>
+        <div class="minicard">
+          <div class="lbl">메인 컬러</div>
+          <div class="val">
+            <span class="swatch" style="background:#f6efe3"></span>베이지(#f6efe3) +
+            <span class="swatch" style="background:#4a2c1a"></span>다크 초콜릿(#4a2c1a)
+          </div>
+        </div>
+        <div class="minicard">
+          <div class="lbl">메뉴 구성</div>
+          <div class="val">사진(2012년, 2013년…) · 신체 프로필 소개 · 똘똘의 호불호 · 살아온 날짜(시간, 일수, 달수, 연수) · 노똘똘에게 하고 싶은 말 · 똘똘이가 사람이라면</div>
+        </div>
+        <div class="minicard">
+          <div class="lbl">참고 사이트</div>
+          <div class="val">당근 about(about.daangn.com) — 따뜻한 톤과 큰 사진 / Zoom(zoom.com/ko) — 넉넉한 여백, 한 화면 한 메시지</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h3>04. 핵심 기능</h3>
+      <table class="feattable">
+        <tr><th>기능</th><th>설명</th><th>우선순위</th></tr>
+        <tr><td class="fname">연도별 사진 갤러리</td><td>2012년, 2013년처럼 연도별로 묶어 똘똘이 사진을 보여주기</td><td><span class="prio high">필수</span></td></tr>
+        <tr><td class="fname">신체 프로필 카드</td><td>이름, 생일, 견종, 털색(초코탄), 몸무게 등을 카드로 정리</td><td><span class="prio high">필수</span></td></tr>
+        <tr><td class="fname">살아온 날 계산기</td><td>생일(2012.05.26)부터 지금까지 연·달·일·시간을 자동 계산</td><td><span class="prio high">필수</span></td></tr>
+        <tr><td class="fname">호불호 카드</td><td>좋아하는 것(간식, 산책)과 싫어하는 것(목욕 등)을 아이콘 카드로 보여주기</td><td><span class="prio mid">나중에</span></td></tr>
+        <tr><td class="fname">한마디 남기기</td><td>가족과 친구가 똘똘이에게 하고 싶은 말을 남기기 (저장 기능이 필요해서 나중에)</td><td><span class="prio mid">나중에</span></td></tr>
+      </table>
+    </div>
+
+    <div class="sec">
+      <h3>05. 필요한 화면</h3>
+      <ul>
+        <li><b>메인</b> — 사이트명과 대표 사진, 메뉴가 보이는 첫 화면</li>
+        <li><b>사진첩</b> — 연도별로 사진을 모아 보는 화면</li>
+        <li><b>똘똘이 소개</b> — 신체 프로필, 호불호, "똘똘이가 사람이라면"을 함께 보여주는 화면</li>
+        <li><b>살아온 날들</b> — 연·달·일·시간 카운터 화면</li>
+        <li><b>한마디 남기기</b> — 노똘똘에게 하고 싶은 말을 남기는 화면</li>
+      </ul>
+    </div>
+
+    <div class="sec">
+      <h3>06. 얻고 싶은 것</h3>
+      <p>열네 살이 된 우리집 똘똘이의 견생을 한곳에 모아, 가족과 친구들이 언제든 보고 추억할 수 있는 기록 공간을 만들고 싶습니다. 이 과정에서 내가 기획한 화면이 실제 인터넷에 떠 있는 경험도 해보고 싶습니다.</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
