@@ -23,6 +23,14 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
 .owner-name{display:block;font-size:13px;letter-spacing:.12em;color:var(--accent);font-weight:800;margin-bottom:2px}
 .owner-mail{display:inline-block;font-size:clamp(22px,5.4vw,34px);font-weight:800;color:#fff;text-decoration:none;letter-spacing:-.01em;word-break:break-all;border-bottom:3px solid var(--accent)}
 .owner-mail:hover{color:var(--accent)}
+.next-wrap{margin-top:34px;padding-top:26px;border-top:1px dashed var(--line);text-align:center}
+.next-wrap p{font-size:13px;color:var(--ink-soft);margin-bottom:12px}
+.next-btn{display:inline-flex;align-items:center;gap:10px;background:var(--sub);color:#fff;text-decoration:none;font-weight:800;font-size:16px;padding:14px 28px;border-radius:999px;box-shadow:0 8px 20px rgba(74,44,26,.22);transition:transform .2s,background .2s}
+.next-btn:hover{background:var(--point);color:var(--sub);transform:translateY(-2px)}
+.next-btn span{display:inline-block;transition:transform .2s}
+.next-btn:hover span{transform:translateX(5px)}
+.hero-next{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--accent);text-decoration:none}
+.hero-next:hover{text-decoration:underline}
 .doc{background:#fff;border:1px solid var(--line);border-radius:12px;padding:40px 44px;margin:-18px 0 60px;box-shadow:0 10px 26px rgba(42,22,11,.08)}
 .doc .doctitle{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:6px}
 .doc h2{font-size:24px;font-weight:800;color:var(--choco-900);margin-bottom:4px}
@@ -138,6 +146,7 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
       <span class="owner-name">노수민</span>
       <a class="owner-mail" href="mailto:soomin3590@naver.com">✉ soomin3590@naver.com</a>
     </div>
+    <a class="hero-next" href="features.html">기능정의서 보러 가기 →</a>
   </div>
 </header>
 
@@ -264,6 +273,11 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
     <div class="sec">
       <h3>06. 얻고 싶은 것</h3>
       <p>열네 살이 된 우리집 똘똘이의 견생을 한곳에 모아, 가족과 친구들이 언제든 보고 추억할 수 있는 기록 공간을 만들고 싶습니다. 이 과정에서 내가 기획한 화면이 실제 인터넷에 떠 있는 경험도 해보고 싶습니다.</p>
+    </div>
+
+    <div class="next-wrap">
+      <p>기획서를 다 읽었다면, 다음은 기능을 구체적으로 풀어쓴 문서입니다.</p>
+      <a class="next-btn" href="features.html">기능정의서 보러 가기 <span>→</span></a>
     </div>
   </div>
 </div>
