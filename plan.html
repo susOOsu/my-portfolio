@@ -7,9 +7,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
 :root{
-  --choco-950:#2a160b; --choco-900:#3b2213; --accent-deep:#7a5238; --accent:#c9a57e;
-  --paper:#f6efe3; --paper-2:#ecdfc9; --ink:#2b1a10; --ink-soft:#6f5a49; --line:#e0d2bb;
-  --must:#4a2c1a; --must-bg:#f3e4d6; --later:#8a6416; --later-bg:#fff4dc;
+  --choco-950:#2a160b; --choco-900:#3b2213; --accent-deep:#7a5238; --accent:#e0a39a;
+  --main:#f8f3ea; --sub:#4a2c1a; --point:#e0a39a;
+  --paper:#f8f3ea; --paper-2:#f0e7d8; --ink:#2b1a10; --ink-soft:#6f5a49; --line:#e6dccb;
+  --must:#4a2c1a; --must-bg:#efe3d6; --later:#a8554b; --later-bg:#f8e1dd;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:var(--paper);color:var(--ink);line-height:1.75;font-size:16px;word-break:keep-all}
@@ -35,16 +36,62 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
 .minicard .lbl{font-size:11px;font-weight:800;color:var(--accent-deep);letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
 .minicard .val{font-size:14px;color:var(--ink)}
 .minicard .val a{color:var(--accent-deep);font-weight:600}
-.swatch{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:4px;vertical-align:-1px;border:1px solid rgba(0,0,0,.15)}
+.anim{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:8px}
+.demo{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.demo .stage{height:78px;display:flex;align-items:center;justify-content:center;background:var(--paper);border-radius:8px;overflow:hidden;font-size:30px}
+.demo b{display:block;font-size:13px;margin-top:8px}
+.demo span.d{font-size:12.5px;color:var(--ink-soft)}
+.paw-bounce span{display:inline-block;animation:bounce 1.2s ease-in-out infinite}
+.paw-bounce span:nth-child(2){animation-delay:.2s}
+.paw-bounce span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px) rotate(-8deg)}}
+.zoomimg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:var(--point);transition:transform .4s ease;font-size:34px}
+.zoomwrap{width:100%;height:100%;overflow:hidden}
+.zoomwrap:hover .zoomimg{transform:scale(1.25)}
+.count-num{font-size:30px;font-weight:800;color:var(--sub);font-variant-numeric:tabular-nums}
+.fadein{opacity:0;transform:translateY(16px);animation:fadeup 2.4s ease-out infinite}
+@keyframes fadeup{0%{opacity:0;transform:translateY(16px)}30%,80%{opacity:1;transform:none}100%{opacity:0;transform:none}}
+.vid{position:relative;width:100%;height:100%;background:linear-gradient(120deg,var(--point),#f3d6c4,var(--point));background-size:300% 300%;animation:vidbg 6s ease-in-out infinite;display:flex;align-items:center;justify-content:center}
+@keyframes vidbg{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.vid em{font-style:normal;font-size:34px;animation:vidmove 4s ease-in-out infinite}
+@keyframes vidmove{0%,100%{transform:translateX(-30px) scale(1)}50%{transform:translateX(30px) scale(1.15)}}
+.vid u{position:absolute;left:0;bottom:0;height:4px;background:var(--sub);animation:vidbar 6s linear infinite}
+@keyframes vidbar{from{width:0}to{width:100%}}
+.vid small{position:absolute;top:6px;left:8px;font-size:10px;font-weight:800;color:var(--sub);background:rgba(255,255,255,.7);padding:1px 7px;border-radius:8px}
+.slider{width:100%;height:100%;overflow:hidden}
+.slider:hover .track{animation-play-state:paused}
+.track{display:flex;width:400%;height:100%;animation:slide 9s ease-in-out infinite}
+.track div{width:25%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;color:var(--sub)}
+.track div:nth-child(1){background:#f0e7d8}
+.track div:nth-child(2){background:#f8e1dd}
+.track div:nth-child(3){background:#efe3d6}
+.track div:nth-child(4){background:#f0e7d8}
+@keyframes slide{0%,20%{transform:translateX(0)}25%,45%{transform:translateX(-25%)}50%,70%{transform:translateX(-50%)}75%,95%{transform:translateX(-75%)}100%{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.scrolly{height:auto}.scrolly .pin{position:static}.paw-bounce span,.fadein,.vid,.vid em,.vid u,.track{animation:none;opacity:1;transform:none}.vid u{width:40%}}
+.scrolly{position:relative;height:280vh;margin-top:6px}
+.scrolly .pin{position:sticky;top:12px;height:min(72vh,460px);background:var(--sub);color:#fff;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+.scrolly .yr{font-size:13px;letter-spacing:.2em;color:var(--point);font-weight:800;transition:opacity .2s}
+.scrolly .big{font-size:clamp(34px,9vw,64px);font-weight:800;font-variant-numeric:tabular-nums;margin:6px 0}
+.scrolly .msg{font-size:14px;color:#e8d9c7;min-height:24px}
+.scrolly .walk{position:relative;width:86%;height:56px;margin-top:26px}
+.scrolly .walk .dog{position:absolute;top:0;left:0;font-size:38px;transform:scaleX(-1)}
+.scrolly .walk .p{position:absolute;bottom:2px;font-size:18px;opacity:0;transition:opacity .25s}
+.scrolly .bar{position:absolute;left:0;bottom:0;height:5px;background:var(--point);width:0}
+.scrolly .hint{position:absolute;top:10px;right:14px;font-size:11px;color:#cdb9a3}
+.fullcard{grid-column:1/-1}
+.palette{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+.chipcolor{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#fff}
+.chipcolor i{display:block;height:72px}
+.chipcolor div{padding:8px 10px;font-size:12.5px;line-height:1.5}
+.chipcolor b{display:block;font-size:13px}
+.chipcolor span{color:var(--ink-soft)}
+
 .feattable{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
 .feattable th{text-align:left;font-size:11px;font-weight:800;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.03em;padding:8px 10px;border-bottom:2px solid var(--line)}
 .feattable td{padding:10px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 .feattable tr:last-child td{border-bottom:none}
 .feattable .fname{font-weight:700;color:var(--choco-900);white-space:nowrap}
-.prio{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 8px;border-radius:10px;white-space:nowrap}
-.prio.high{background:var(--must-bg);color:var(--must)}
-.prio.mid{background:var(--later-bg);color:var(--later)}
-@media(max-width:600px){.doc{padding:28px 24px}.twocol{grid-template-columns:1fr}.feattable .fname{white-space:normal}}
+@media(max-width:600px){.palette,.anim{grid-template-columns:1fr}.doc{padding:28px 24px}.twocol{grid-template-columns:1fr}.feattable .fname{white-space:normal}}
 </style>
 </head>
 <body>
@@ -89,11 +136,12 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
           <div class="lbl">사이트명 / 로고</div>
           <div class="val">2012년생 꼬마 닥스훈트 노똘똘의 견생 일지 🐾🐾🐾 (메인에는 "노똘똘의 견생 일지"만 크게, 나머지는 부제로)</div>
         </div>
-        <div class="minicard">
-          <div class="lbl">메인 컬러</div>
-          <div class="val">
-            <span class="swatch" style="background:#f6efe3"></span>베이지(#f6efe3) +
-            <span class="swatch" style="background:#4a2c1a"></span>다크 초콜릿(#4a2c1a)
+        <div class="minicard fullcard">
+          <div class="lbl">컬러 팔레트</div>
+          <div class="palette">
+            <div class="chipcolor"><i style="background:#f8f3ea;border-bottom:1px solid var(--line)"></i><div><b>메인 · 아이보리 베이지</b>#f8f3ea<br><span>배경, 카드 바탕 (은은한 크림 화이트)</span></div></div>
+            <div class="chipcolor"><i style="background:#4a2c1a"></i><div><b>서브 · 다크 초콜릿</b>#4a2c1a<br><span>제목, 글자, 진한 강조 영역</span></div></div>
+            <div class="chipcolor"><i style="background:#e0a39a"></i><div><b>포인트 · 더스티 핑크</b>#e0a39a<br><span>버튼, 뱃지, 발바닥 아이콘 (웜톤)</span></div></div>
           </div>
         </div>
         <div class="minicard">
@@ -109,9 +157,38 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
             <br><b style="display:inline-block;margin-top:8px">디자인 느낌 참고 (핀터레스트)</b><br>
             <a href="https://kr.pinterest.com/pin/6122149489144315/" target="_blank" rel="noopener">반려동물 입양 사이트</a> — 베이지·브라운 톤, 강아지 줄 세우기, 발바닥 아이콘<br>
             <a href="https://kr.pinterest.com/pin/402579654213396642/" target="_blank" rel="noopener">HowiePaws 랜딩</a> — 큰 타이틀과 동물 사진, 둥근 뱃지<br>
-            <a href="https://kr.pinterest.com/pin/1137158974701873593/" target="_blank" rel="noopener">펫 스토어 컨셉</a> — 발바닥 일러스트, 둥근 카드 메뉴<br>
-            <a href="https://kr.pinterest.com/pin/951033646320418780/" target="_blank" rel="noopener">펫 케어 서비스</a> — 아치형 사진 콜라주, 손그림 포인트
+            <a href="https://kr.pinterest.com/pin/1137158974701873593/" target="_blank" rel="noopener">펫 스토어 컨셉</a> — 둥근 카드 메뉴, <b>발바닥 일러스트가 귀여워서 체크 ✔</b><br>
+            <a href="https://kr.pinterest.com/pin/951033646320418780/" target="_blank" rel="noopener">펫 케어 서비스</a> — 아치형 사진 콜라주, 손그림 포인트<br>
+            <a href="https://kr.pinterest.com/pin/2533343531172247/" target="_blank" rel="noopener">도그 워킹 사이트</a> — 베이지 배경, 둥근 사진 프레임, 점선 길 장식, 웨이브 구분선
+            <br><b style="display:inline-block;margin-top:8px">사진 예시 (핀터레스트)</b><br>
+            <a href="https://kr.pinterest.com/pin/1152851204646154673/" target="_blank" rel="noopener">박스 안에서 올려다본 강아지</a> — 광각 클로즈업으로 코와 눈을 크게 담은 사진 느낌
           </div>
+        </div>
+        <div class="minicard fullcard">
+          <div class="lbl">애니메이션 예시 (직접 움직여 보세요)</div>
+          <div class="anim">
+            <div class="demo"><div class="stage paw-bounce"><span>🐾</span><span>🐾</span><span>🐾</span></div><b>발바닥 통통</b><span class="d">메인 제목 옆에서 발바닥이 차례로 튀어 오르기</span></div>
+            <div class="demo"><div class="stage"><div class="zoomwrap"><div class="zoomimg">🐶</div></div></div><b>사진 호버 확대</b><span class="d">사진첩에서 마우스를 올리면 사진이 부드럽게 커지기</span></div>
+            <div class="demo"><div class="stage"><span class="count-num" id="demo-count">0</span></div><b>숫자 카운트업</b><span class="d">"살아온 날"이 0부터 올라가며 오늘 숫자에 도착하기</span></div>
+            <div class="demo"><div class="stage"><span class="fadein">📷 2012년</span></div><b>스크롤 페이드인</b><span class="d">스크롤을 내리면 카드가 아래에서 부드럽게 떠오르기</span></div>
+            <div class="demo"><div class="stage"><div class="vid"><small>▶ 영상</small><em>🐕</em><u></u></div></div><b>영상 섹션 (당근 참고)</b><span class="d">스크롤을 내리다가 중간에 똘똘이 영상이 나와 재생되기</span></div>
+            <div class="demo"><div class="stage"><div class="slider"><div class="track"><div>📷 2012</div><div>📷 2013</div><div>📷 2014</div><div>📷 2015</div></div></div></div><b>가로 슬라이드 (Zoom 참고)</b><span class="d">사진이 옆으로 밀리며 연도별로 넘어가기 (마우스를 올리면 멈춤)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h3>03-1. 스크롤 애니메이션</h3>
+      <p>화면이 쭉 내려가는 대신, 스크롤하는 만큼 화면 안의 애니메이션이 진행되는 방식입니다. 아래 검은 박스가 고정된 채로 스크롤에 맞춰 움직입니다. (Zoom, 당근 참고)</p>
+      <div class="scrolly" id="scrolly">
+        <div class="pin">
+          <div class="hint">↓ 스크롤해 보세요</div>
+          <div class="yr" id="sc-yr">2012.05.26</div>
+          <div class="big" id="sc-big">0일</div>
+          <div class="msg" id="sc-msg">똘똘이가 태어났어요</div>
+          <div class="walk" id="sc-walk"><span class="dog">🐕</span></div>
+          <div class="bar" id="sc-bar"></div>
         </div>
       </div>
     </div>
@@ -119,12 +196,12 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
     <div class="sec">
       <h3>04. 핵심 기능</h3>
       <table class="feattable">
-        <tr><th>기능</th><th>설명</th><th>우선순위</th></tr>
-        <tr><td class="fname">연도별 사진 갤러리</td><td>2012년, 2013년처럼 연도별로 묶어 똘똘이 사진을 보여주기</td><td><span class="prio high">필수</span></td></tr>
-        <tr><td class="fname">신체 프로필 카드</td><td>이름, 생일, 견종, 털색(초코탄), 몸무게 등을 카드로 정리</td><td><span class="prio high">필수</span></td></tr>
-        <tr><td class="fname">살아온 날 계산기</td><td>생일(2012.05.26)부터 지금까지 연·달·일·시간을 자동 계산</td><td><span class="prio high">필수</span></td></tr>
-        <tr><td class="fname">호불호 카드</td><td>좋아하는 것(간식, 산책)과 싫어하는 것(목욕 등)을 아이콘 카드로 보여주기</td><td><span class="prio mid">나중에</span></td></tr>
-        <tr><td class="fname">한마디 남기기</td><td>가족과 친구가 똘똘이에게 하고 싶은 말을 남기기 (저장 기능이 필요해서 나중에)</td><td><span class="prio mid">나중에</span></td></tr>
+        <tr><th>기능</th><th>설명</th></tr>
+        <tr><td class="fname">연도별 사진 갤러리</td><td>2012년, 2013년처럼 연도별로 묶어 똘똘이 사진을 보여주기</td></tr>
+        <tr><td class="fname">신체 프로필 카드</td><td>이름, 생일, 견종, 털색(초코탄), 몸무게 등을 카드로 정리</td></tr>
+        <tr><td class="fname">살아온 날 계산기</td><td>생일(2012.05.26)부터 지금까지 연·달·일·시간을 자동 계산</td></tr>
+        <tr><td class="fname">호불호 카드</td><td>좋아하는 것(간식, 산책)과 싫어하는 것(목욕 등)을 아이콘 카드로 보여주기</td></tr>
+        <tr><td class="fname">한마디 남기기</td><td>가족과 친구가 똘똘이에게 하고 싶은 말을 남기기</td></tr>
       </table>
     </div>
 
@@ -146,5 +223,59 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
   </div>
 </div>
 
+<script>
+(function(){
+  var el=document.getElementById('demo-count');
+  if(!el)return;
+  var target=Math.floor((Date.now()-new Date(2012,4,26))/86400000);
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(){
+    if(reduce){el.textContent=target.toLocaleString('ko-KR')+'일';return;}
+    var start=null,dur=2000;
+    function step(t){
+      if(start===null)start=t;
+      var p=Math.min((t-start)/dur,1),e=1-Math.pow(1-p,3);
+      el.textContent=Math.floor(target*e).toLocaleString('ko-KR')+'일';
+      if(p<1)requestAnimationFrame(step);else setTimeout(function(){start=null;requestAnimationFrame(step)},1800);
+    }
+    requestAnimationFrame(step);
+  }
+  run();
+})();
+</script>
+<script>
+(function(){
+  var root=document.getElementById('scrolly');
+  if(!root)return;
+  var yr=document.getElementById('sc-yr'),big=document.getElementById('sc-big'),msg=document.getElementById('sc-msg'),
+      walk=document.getElementById('sc-walk'),bar=document.getElementById('sc-bar');
+  var total=Math.floor((Date.now()-new Date(2012,4,26))/86400000),N=8,paws=[];
+  for(var i=0;i<N;i++){var e=document.createElement('span');e.className='p';e.textContent='🐾';e.style.left=(i/N*88+4)+'%';e.style.bottom=(i%2?8:0)+'px';walk.appendChild(e);paws.push(e);}
+  var dog=walk.querySelector('.dog');
+  var steps=[[0,'2012.05.26','똘똘이가 태어났어요'],[.34,'2016','꼬마 시절을 지나'],[.67,'2020','어느새 듬직한 어른으로'],[.95,'오늘','지금도 쫑쫑 걷는 중']];
+  function update(p){
+    big.textContent=Math.floor(total*p).toLocaleString('ko-KR')+'일';
+    var st=steps[0];steps.forEach(function(x){if(p>=x[0])st=x;});
+    yr.textContent=st[1];msg.textContent=st[2];
+    dog.style.left=(p*(walk.clientWidth-44))+'px';
+    paws.forEach(function(el,i){el.style.opacity=p>(i+.5)/N?1:0;});
+    bar.style.width=(p*100)+'%';
+  }
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){update(1);return;}
+  var ticking=false;
+  function onScroll(){
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(function(){
+      var r=root.getBoundingClientRect(),span=root.offsetHeight-window.innerHeight*0.72;
+      var p=Math.min(1,Math.max(0,-r.top/Math.max(span,1)));
+      update(p);ticking=false;
+    });
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  update(0);
+})();
+</script>
 </body>
 </html>
