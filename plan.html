@@ -67,7 +67,7 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
 .track div:nth-child(3){background:#efe3d6}
 .track div:nth-child(4){background:#f0e7d8}
 @keyframes slide{0%,20%{transform:translateX(0)}25%,45%{transform:translateX(-25%)}50%,70%{transform:translateX(-50%)}75%,95%{transform:translateX(-75%)}100%{transform:translateX(0)}}
-@media(prefers-reduced-motion:reduce){.scrolly{height:auto}.scrolly .pin{position:static}.paw-bounce span,.fadein,.vid,.vid em,.vid u,.track{animation:none;opacity:1;transform:none}.vid u{width:40%}}
+@media(prefers-reduced-motion:reduce){.scrolly{height:auto}.scrolly .pin{position:static}.paw-bounce span,.fadein,.loader .lp,.loader .lb i,.vid,.vid em,.vid u,.track{animation:none;opacity:1;transform:none}.vid u{width:40%}}
 .scrolly{position:relative;height:280vh;margin-top:6px}
 .scrolly .pin{position:sticky;top:12px;height:min(72vh,460px);background:var(--sub);color:#fff;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
 .scrolly .yr{font-size:13px;letter-spacing:.2em;color:var(--point);font-weight:800;transition:opacity .2s}
@@ -78,6 +78,35 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
 .scrolly .walk .p{position:absolute;bottom:2px;font-size:18px;opacity:0;transition:opacity .25s}
 .scrolly .bar{position:absolute;left:0;bottom:0;height:5px;background:var(--point);width:0}
 .scrolly .hint{position:absolute;top:10px;right:14px;font-size:11px;color:#cdb9a3}
+.loader{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%}
+.loader .lp{font-size:26px;animation:loadpaw 1.4s ease-in-out infinite}
+@keyframes loadpaw{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.25) rotate(-12deg)}}
+.loader .lb{width:60%;height:6px;background:var(--line);border-radius:3px;overflow:hidden}
+.loader .lb i{display:block;height:100%;background:var(--point);animation:loadbar 3s ease-in-out infinite}
+@keyframes loadbar{0%{width:0}85%,100%{width:100%}}
+.loader .ln{font-size:12px;font-weight:700;color:var(--sub)}
+.hoverchg{width:100%;height:100%;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;background:var(--paper-2);color:var(--sub);font-weight:800;font-size:18px;transition:background .3s,color .3s,letter-spacing .3s}
+.hoverchg .e{display:inline-block;transition:transform .3s}
+.hoverchg:hover{background:var(--sub);color:var(--point);letter-spacing:.12em}
+.hoverchg:hover .e{transform:rotate(20deg) scale(1.3)}
+.hoverchg .a{display:inline}.hoverchg .b{display:none}
+.hoverchg:hover .a{display:none}.hoverchg:hover .b{display:inline}
+.curstage{position:relative;width:100%;height:100%;cursor:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--ink-soft);background:var(--paper-2)}
+.curstage .cur{position:absolute;left:0;top:0;line-height:0;pointer-events:none;opacity:0;transition:opacity .2s,transform .08s linear;will-change:transform}
+.curstage.on .cur{opacity:1}
+.curstage .cur svg{transition:transform .15s}
+.curstage.down .cur svg{transform:scale(1.3)}
+.curstage .cur .eyeH,.curstage .cur .tH{display:none}
+.curstage.hot .cur .eyeN,.curstage.hot .cur .tN{display:none}
+.curstage.hot .cur .eyeH,.curstage.hot .cur .tH{display:inline}
+.curstage.hot .cur svg{transform:scale(1.2) rotate(-8deg)}
+.curstage .cbtn{position:absolute;right:10px;bottom:8px;border:0;border-radius:999px;background:var(--sub);color:#fff;font:700 12px 'Pretendard',sans-serif;padding:6px 14px;cursor:none;transition:background .2s}
+.curstage .cbtn:hover{background:var(--point);color:var(--sub)}
+.edgebox{position:relative;width:100%;height:100%;overflow-y:auto;background:var(--paper);scrollbar-width:thin}
+.edgebox .edge{position:sticky;top:0;height:0;overflow:visible;z-index:2}
+.edgebox .edge span{position:absolute;top:6px;font-size:24px}
+.edgebox .edge .l{left:6px}.edgebox .edge .r{right:6px}
+.edgebox p{font-size:12px;padding:6px 40px;line-height:1.5;color:var(--ink-soft)}
 .fullcard{grid-column:1/-1}
 .palette{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
 .chipcolor{border-radius:10px;overflow:hidden;border:1px solid var(--line);background:#fff}
@@ -153,13 +182,16 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
           <div class="val">
             <b>애니메이션 참고</b><br>
             <a href="https://about.daangn.com/" target="_blank" rel="noopener">당근 about</a> — 따뜻한 톤, 부드러운 스크롤 연출<br>
-            <a href="https://www.zoom.com/ko" target="_blank" rel="noopener">Zoom</a> — 넉넉한 여백, 한 화면 한 메시지
+            <a href="https://www.zoom.com/ko" target="_blank" rel="noopener">Zoom</a> — 넉넉한 여백, 한 화면 한 메시지<br>
+            <a href="https://robotori.co.kr/v2/web/main/main.asp" target="_blank" rel="noopener">로보토리</a> — 로딩 화면, 마우스를 올리면 바뀌는 애니메이션, 스크롤을 내리면 그때 나타나는 애니메이션<br>
+            <a href="https://eggiscoming.com/" target="_blank" rel="noopener">eggiscoming</a> — 모양이 바뀌는 마우스 커서, 스크롤해도 화면 가장자리에 계속 남아 있는 이미지
             <br><b style="display:inline-block;margin-top:8px">디자인 느낌 참고 (핀터레스트)</b><br>
-            <a href="https://kr.pinterest.com/pin/6122149489144315/" target="_blank" rel="noopener">반려동물 입양 사이트</a> — 베이지·브라운 톤, 강아지 줄 세우기, 발바닥 아이콘<br>
-            <a href="https://kr.pinterest.com/pin/402579654213396642/" target="_blank" rel="noopener">HowiePaws 랜딩</a> — 큰 타이틀과 동물 사진, 둥근 뱃지<br>
-            <a href="https://kr.pinterest.com/pin/1137158974701873593/" target="_blank" rel="noopener">펫 스토어 컨셉</a> — 둥근 카드 메뉴, <b>발바닥 일러스트가 귀여워서 체크 ✔</b><br>
-            <a href="https://kr.pinterest.com/pin/951033646320418780/" target="_blank" rel="noopener">펫 케어 서비스</a> — 아치형 사진 콜라주, 손그림 포인트<br>
-            <a href="https://kr.pinterest.com/pin/2533343531172247/" target="_blank" rel="noopener">도그 워킹 사이트</a> — 베이지 배경, 둥근 사진 프레임, 점선 길 장식, 웨이브 구분선
+            <a href="https://kr.pinterest.com/pin/6122149489144315/" target="_blank" rel="noopener">반려동물 입양 사이트</a> — 얼빡(얼굴 클로즈업) 사진과 그 근처의 버튼 배치, 베이지·브라운 색감<br>
+            <a href="https://kr.pinterest.com/pin/1137158974701873593/" target="_blank" rel="noopener">펫 스토어 컨셉</a> — 발바닥 일러스트 디자인만 참고<br>
+            <a href="https://kr.pinterest.com/pin/951033646320418780/" target="_blank" rel="noopener">펫 케어 서비스</a> — 아치형 이미지<br>
+            <a href="https://kr.pinterest.com/pin/2533343531172247/" target="_blank" rel="noopener">도그 워킹 사이트</a> — 강아지 이미지 옆에 글이 놓인 구성<br>
+            <a href="https://kr.pinterest.com/pin/323274079524920943/" target="_blank" rel="noopener">The Paw Advisor 랜딩</a> — 전체적인 사이트 느낌<br>
+            <a href="https://kr.pinterest.com/pin/1618549864561101/" target="_blank" rel="noopener">PetsYou 보호소 템플릿</a> — 전체적인 사이트 느낌
             <br><b style="display:inline-block;margin-top:8px">사진 예시 (핀터레스트)</b><br>
             <a href="https://kr.pinterest.com/pin/1152851204646154673/" target="_blank" rel="noopener">박스 안에서 올려다본 강아지</a> — 광각 클로즈업으로 코와 눈을 크게 담은 사진 느낌
           </div>
@@ -170,9 +202,13 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
             <div class="demo"><div class="stage paw-bounce"><span>🐾</span><span>🐾</span><span>🐾</span></div><b>발바닥 통통</b><span class="d">메인 제목 옆에서 발바닥이 차례로 튀어 오르기</span></div>
             <div class="demo"><div class="stage"><div class="zoomwrap"><div class="zoomimg">🐶</div></div></div><b>사진 호버 확대</b><span class="d">사진첩에서 마우스를 올리면 사진이 부드럽게 커지기</span></div>
             <div class="demo"><div class="stage"><span class="count-num" id="demo-count">0</span></div><b>숫자 카운트업</b><span class="d">"살아온 날"이 0부터 올라가며 오늘 숫자에 도착하기</span></div>
-            <div class="demo"><div class="stage"><span class="fadein">📷 2012년</span></div><b>스크롤 페이드인</b><span class="d">스크롤을 내리면 카드가 아래에서 부드럽게 떠오르기</span></div>
+            <div class="demo"><div class="stage"><span class="fadein">📷 2012년</span></div><b>스크롤하면 나타나기 (로보토리 참고)</b><span class="d">처음부터 보이지 않고, 스크롤을 내리면 그때 아래에서 떠오르며 나타나기</span></div>
             <div class="demo"><div class="stage"><div class="vid"><small>▶ 영상</small><em>🐕</em><u></u></div></div><b>영상 섹션 (당근 참고)</b><span class="d">스크롤을 내리다가 중간에 똘똘이 영상이 나와 재생되기</span></div>
             <div class="demo"><div class="stage"><div class="slider"><div class="track"><div>📷 2012</div><div>📷 2013</div><div>📷 2014</div><div>📷 2015</div></div></div></div><b>가로 슬라이드 (Zoom 참고)</b><span class="d">사진이 옆으로 밀리며 연도별로 넘어가기 (마우스를 올리면 멈춤)</span></div>
+            <div class="demo"><div class="stage"><div class="loader"><span class="lp">🐾</span><div class="lb"><i></i></div><span class="ln">똘똘이 데리러 가는 중...</span></div></div><b>로딩 화면 (로보토리 참고)</b><span class="d">사이트가 열리기 전, 발바닥과 진행 막대가 나오는 화면</span></div>
+            <div class="demo"><div class="stage"><div class="hoverchg"><span class="e">🐶</span><span class="a">노똘똘</span><span class="b">멍멍!</span></div></div><b>마우스 올리면 바뀌는 효과 (로보토리 참고)</b><span class="d">카드나 버튼에 마우스를 올리면 색, 글자, 이모티콘이 바뀌기</span></div>
+            <div class="demo"><div class="stage"><div class="curstage" id="cur-stage"><span>마우스를 올려 보세요</span><button class="cbtn" type="button" id="cur-btn">눌러보기</button><span class="cur" id="cur-dot"><svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true"><ellipse cx="11" cy="34" rx="9" ry="19" fill="#3b2213" transform="rotate(12 11 34)"/><ellipse cx="53" cy="34" rx="9" ry="19" fill="#3b2213" transform="rotate(-12 53 34)"/><ellipse cx="32" cy="30" rx="19" ry="21" fill="#4a2c1a"/><ellipse cx="32" cy="42" rx="12" ry="14" fill="#c98f5e"/><g class="eyeN"><circle cx="24" cy="25" r="3.2" fill="#fff"/><circle cx="40" cy="25" r="3.2" fill="#fff"/><circle cx="24.6" cy="25.4" r="1.8" fill="#1d0f07"/><circle cx="40.6" cy="25.4" r="1.8" fill="#1d0f07"/></g><g class="eyeH"><path d="M20 27 q4 -7 8 0 M36 27 q4 -7 8 0" stroke="#1d0f07" stroke-width="2.6" fill="none" stroke-linecap="round"/></g><path d="M18 17 q4 -4 9 -2 M46 17 q-4 -4 -9 -2" stroke="#c98f5e" stroke-width="2" fill="none" stroke-linecap="round"/><ellipse cx="32" cy="38" rx="5.5" ry="4" fill="#1d0f07"/><path d="M32 42 v4 M27 47 q5 4 10 0" stroke="#1d0f07" stroke-width="1.8" fill="none" stroke-linecap="round"/><path class="tN" d="M28 49 q4 8 8 0 z" fill="#e0a39a"/><path class="tH" d="M26 48 q6 15 12 0 z" fill="#e0a39a"/></svg></span></div></div><b>바뀌는 마우스 커서 (eggiscoming 참고)</b><span class="d">마우스 포인터가 닥스훈트 얼굴로 바뀌어 따라다니고, 버튼 위에 올리면 활짝 웃는 표정으로 바뀌기</span></div>
+            <div class="demo"><div class="stage"><div class="edgebox"><div class="edge"><span class="l">🐕</span><span class="r">🦴</span></div><p>스크롤해도</p><p>양쪽 가장자리의 이미지는</p><p>화면에 그대로 남아 있어요.</p><p>똘똘이가 계속 따라다니는 느낌!</p><p>마지막 줄이에요 🐾</p></div></div><b>가장자리에 고정된 이미지 (eggiscoming 참고)</b><span class="d">스크롤을 해도 좌우 가장자리에 이미지가 계속 남아 있기 (박스 안에서 스크롤해 보세요)</span></div>
           </div>
         </div>
       </div>
@@ -275,6 +311,26 @@ body{font-family:'Pretendard',-apple-system,"Apple SD Gothic Neo","Malgun Gothic
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll);
   update(0);
+})();
+</script>
+<script>
+(function(){
+  var st=document.getElementById('cur-stage'),dot=document.getElementById('cur-dot');
+  if(!st||!dot)return;
+  st.addEventListener('mouseenter',function(){st.classList.add('on');});
+  st.addEventListener('mouseleave',function(){st.classList.remove('on','down');});
+  st.addEventListener('mousemove',function(e){
+    var r=st.getBoundingClientRect();
+    dot.style.transform='translate('+(e.clientX-r.left-20)+'px,'+(e.clientY-r.top-20)+'px)';
+  });
+  var btn=document.getElementById('cur-btn');
+  if(btn){
+    btn.addEventListener('mouseenter',function(){st.classList.add('hot');});
+    btn.addEventListener('mouseleave',function(){st.classList.remove('hot');});
+  }
+  st.addEventListener('mouseleave',function(){st.classList.remove('hot');});
+  st.addEventListener('mousedown',function(){st.classList.add('down');});
+  st.addEventListener('mouseup',function(){st.classList.remove('down');});
 })();
 </script>
 </body>
